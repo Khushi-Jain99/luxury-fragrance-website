@@ -1,0 +1,127 @@
+<main class="fade-in">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__content container">
+            <p class="hero__subtitle">The Art of Scent</p>
+            <h1 class="hero__title">Elegance in<br>Every Breath</h1>
+            <p class="hero__description">Explore our curated collection of rare essences and timeless compositions
+                designed for the discerning individual.</p>
+            <div class="hero__actions">
+                <a routerLink="/women" class="btn btn--primary">Discover Women</a>
+                <a routerLink="/men" class="btn btn--outline">Discover Men</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured container">
+        <div class="section-title">
+            <h2>Featured Creations</h2>
+            <p>The essence of the season</p>
+        </div>
+
+        <div class="product-grid">
+            @for (product of featuredProducts(); track product.id) {
+            <app-product-card [product]="product"></app-product-card>
+            }
+        </div>
+    </section>
+
+    <!-- Brand Intro -->
+    <section class="brand-intro">
+        <div class="container brand-intro__grid">
+            <div class="brand-intro__image">
+                <img src="https://images.unsplash.com/photo-1590156221122-c748e78f2a7a?auto=format&fit=crop&q=80&w=1000"
+                    alt="Fragrance creation">
+            </div>
+            <div class="brand-intro__text">
+                <p class="overline">Our Heritage</p>
+                <h2>Crafting Liquid Emotion</h2>
+                <p>At Luminaire, we believe a fragrance is more than just a scent—it's a silent signature, a memory
+                    captured in a bottle. Our master perfumers travel the globe to source the finest natural raw
+                    materials, blending traditional techniques with modern innovation to create olfactory masterpieces.
+                </p>
+                <a routerLink="/about" class="btn btn--outline">Discover Our Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections CTA -->
+    <section class="collections container">
+        <div class="collection-item men">
+            <div class="collection-content">
+                <h3>L'Homme</h3>
+                <p>Strength and Sophistication</p>
+                <a routerLink="/men" class="btn btn--outline">Shop Men</a>
+            </div>
+        </div>
+        <div class="collection-item women">
+            <div class="collection-content">
+                <h3>La Femme</h3>
+                <p>Grace and Radiance</p>
+                <a routerLink="/women" class="btn btn--outline">Shop Women</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process container">
+        <div class="section-title">
+            <h2>From Field to Flacon</h2>
+            <p>Our meticulous process of creation</p>
+        </div>
+        <div class="process__grid">
+            <div class="process__step">
+                <span class="process__number">01</span>
+                <h3>Ethical Sourcing</h3>
+                <p>We work directly with local farmers in Grasse, Haiti, and Morocco to source the purest raw materials.
+                </p>
+            </div>
+            <div class="process__step">
+                <span class="process__number">02</span>
+                <h3>Artisanal Extraction</h3>
+                <p>Using slow steam distillation and co2 extraction to preserve the delicate olfactory profile of each
+                    ingredient.</p>
+            </div>
+            <div class="process__step">
+                <span class="process__number">03</span>
+                <h3>Master Blending</h3>
+                <p>Each formula is aged for six months in stainless steel vats to allow the molecules to harmonize
+                    perfectly.</p>
+            </div>
+            <div class="process__step">
+                <span class="process__number">04</span>
+                <h3>Signature Bottling</h3>
+                <p>Hand-poured and inspected in our Paris atelier, ensuring every bottle meets our exacting standards.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="testimonial-slider">
+                <div class="testimonial-item">
+                    <blockquote>"A Luminaire scent is like a second skin. It doesn't announce your arrival; it lingers
+                        like a beautiful memory after you've left."</blockquote>
+                    <cite>— Elena Vance, Fashion Critic</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter container">
+        <div class="newsletter__card">
+            <div class="newsletter__content">
+                <h2>Join The Inner Circle</h2>
+                <p>Be the first to experience our seasonal limited releases and private boutique events.</p>
+                <form class="newsletter__form">
+                    <input type="email" placeholder="Enter your email address">
+                    <button type="submit" class="btn btn--primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,21 @@
+<nav class="navbar">
+  <div class="navbar__container container">
+    <div class="navbar__logo">
+      <a routerLink="/" (click)="closeMenu()">LUMINAIRE</a>
+    </div>
+
+    <ul class="navbar__links" [class.active]="isMenuOpen()">
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Home</a></li>
+      <li><a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">About</a></li>
+      <li><a routerLink="/men" routerLinkActive="active" (click)="closeMenu()">Men</a></li>
+      <li><a routerLink="/women" routerLinkActive="active" (click)="closeMenu()">Women</a></li>
+      <li><a routerLink="/samples" routerLinkActive="active" (click)="closeMenu()">Samples</a></li>
+    </ul>
+
+    <div class="navbar__toggle" (click)="toggleMenu()" [class.active]="isMenuOpen()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </div>
+</nav>

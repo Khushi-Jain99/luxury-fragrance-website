@@ -1,0 +1,14 @@
+<div class="card">
+    <div class="card__image">
+        <img [src]="product.image" [alt]="product.name">
+        <div class="card__overlay">
+            <button class="btn btn--primary">Add to Bag</button>
+        </div>
+    </div>
+    <div class="card__content">
+        <p class="card__brand">{{ product.brand }}</p>
+        <h3 class="card__name">{{ product.name }}</h3>
+        <p class="card__desc">{{ product.description }}</p>
+        <p class="card__price">{{ product.price | currency:'USD' }}</p>
+    </div>
+</div>

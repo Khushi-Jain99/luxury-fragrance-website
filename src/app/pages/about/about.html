@@ -1,0 +1,122 @@
+<main class="page-container fade-in">
+    <header class="page-header">
+        <div class="container">
+            <p class="overline">Heritage</p>
+            <h1>Our Story</h1>
+            <p class="subtitle">A journey through scent, time, and emotion.</p>
+        </div>
+    </header>
+
+    <!-- Brand Story Section -->
+    <section class="about-section container">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>The Vision</h2>
+                <p>Founded in the heart of Paris, Luminaire began as a small atelier dedicated to capturing the
+                    ephemeral beauty of nature. Our founder, a botanist turned perfumer, believed that every flower,
+                    wood, and resin had a story to tell—one that could only be narrated through the complex language of
+                    olfaction.</p>
+                <p>Today, we continue that tradition of excellence, working with independent growers globally to ensure
+                    that every drop of essence in our bottles is of the highest purity and ethical origin.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1615485925600-97237c4fc1ec?auto=format&fit=crop&q=80&w=1000"
+                    alt="Perfume bottles and ingredients">
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="about-section about-section--dark">
+        <div class="container about-grid about-grid--reverse">
+            <div class="about-text">
+                <h2>Minimalism & Art</h2>
+                <p>We believe in the beauty of simplicity. Our bottles are designed with a minimal aesthetic to let the
+                    fragrance inside be the true protagonist. We avoid unnecessary additives, focusing instead on the
+                    raw power of the ingredients themselves.</p>
+                <p>Every Luminaire fragrance is a collaboration between science and art, a meticulous balance that
+                    results in a scent that evolves with your skin throughout the day.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=1000"
+                    alt="Artistic perfume photography">
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values container">
+        <div class="values__grid">
+            <div class="value-item">
+                <h3>Purity</h3>
+                <p>No synthetic fillers. Only the finest botanical essences and pure grain spirits are ever used in our
+                    formulations.</p>
+            </div>
+            <div class="value-item">
+                <h3>Heritage</h3>
+                <p>Drawing from centuries of French perfumery while embracing modern sustainable extraction methods.</p>
+            </div>
+            <div class="value-item">
+                <h3>Intimacy</h3>
+                <p>Fragrance is personal. We design scents that create a private radius, meant to be discovered, not
+                    announced.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commitment Section -->
+    <section class="about-section">
+        <div class="container about-grid">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1544161515-4af6b1d8d16e?auto=format&fit=crop&q=80&w=1000"
+                    alt="Sustainable sourcing">
+            </div>
+            <div class="about-text">
+                <h2>Our Commitment</h2>
+                <p>Luxury must be responsible. We are committed to 100% plastic-free packaging by 2025 and ensure all
+                    our ingredient partners follow fair-trade practices. Our bottles are infinitely refillable at any of
+                    our global boutiques, encouraging a circular approach to beauty.</p>
+                <p>We believe that true elegance is found when the pursuit of beauty aligns with the preservation of our
+                    planet's most precious resources.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-section container">
+        <div class="section-title">
+            <h2>Contact Our Boutique</h2>
+            <p>Inquiries, collaborations, or private consultations</p>
+        </div>
+
+        <div class="contact-wrapper">
+            @if (submitted) {
+            <div class="success-message">
+                <p>Thank you for reaching out. A fragrance specialist will contact you shortly.</p>
+            </div>
+            } @else {
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" formControlName="name" placeholder="Your full name"
+                        [class.error]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" formControlName="email" placeholder="email@example.com"
+                        [class.error]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" formControlName="message" rows="5" placeholder="How can we assist you?"
+                        [class.error]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn--primary" [disabled]="contactForm.invalid">Send Message</button>
+            </form>
+            }
+        </div>
+    </section>
+</main>

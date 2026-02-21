@@ -1,0 +1,66 @@
+<main class="page-container fade-in">
+    <header class="page-header">
+        <div class="container">
+            <p class="overline">Experience</p>
+            <h1>Discovery</h1>
+            <p class="subtitle">Sample our masterpieces before committing to a full-sized bottle.</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="product-grid">
+            @for (product of products(); track product.id) {
+            <app-product-card [product]="product"></app-product-card>
+            }
+        </div>
+    </section>
+
+    <!-- Discovery Intro -->
+    <section class="collection-intro container">
+        <div class="about-grid about-grid--reverse">
+            <div class="about-text">
+                <h2>The Art of Discovery</h2>
+                <p>We believe that finding a signature scent is a journey that shouldn't be rushed. Our discovery sets
+                    and individual samples allow you to experience our compositions in the comfort of your own
+                    environment, letting the fragrance evolve naturally on your skin over several hours.</p>
+                <p>Each sample is hand-decanted and presented with a descriptive card detailing the top, heart, and base
+                    notes, along with the story behind the creation.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1592914610354-fd35984456b2?auto=format&fit=crop&q=80&w=1000"
+                    alt="Samples and Vials">
+            </div>
+        </div>
+    </section>
+
+    <!-- Redemption Service -->
+    <section class="services container">
+        <div class="section-title">
+            <h2>Discovery Benefits</h2>
+            <p>Your journey to the perfect scent</p>
+        </div>
+        <div class="services__grid">
+            <div class="service-item">
+                <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=500"
+                    alt="Credit back">
+                <h4>Full Credit Back</h4>
+                <p>The cost of your discovery set can be applied as a credit toward any full-sized bottle purchase
+                    within 30 days.</p>
+            </div>
+            <div class="service-item">
+                <img src="https://images.unsplash.com/photo-1616601432703-a1288647e30d?auto=format&fit=crop&q=80&w=500"
+                    alt="Guide">
+                <h4>Layering Guide</h4>
+                <p>Receive our exclusive guide on how to layer different Luminaire scents to create your own bespoke
+                    olfactory profile.</p>
+            </div>
+            <div class="service-item">
+                <img src="https://images.unsplash.com/photo-1615485499978-1279c3d6ac3d?auto=format&fit=crop&q=80&w=500"
+                    alt="Complimentary">
+                <h4>Complimentary Shipping</h4>
+                <p>All discovery sets and individual samples include complimentary worldwide carbon-neutral shipping.
+                </p>
+            </div>
+        </div>
+    </section>
+</main>
