@@ -1,0 +1,39 @@
+<main class="page-container fade-in">
+    <header class="page-header">
+        <div class="container">
+            <p class="overline">Favorites</p>
+            <h1>Your Wishlist</h1>
+            <p class="subtitle">Fragrances you've saved for later.</p>
+        </div>
+    </header>
+
+    <section class="wishlist-content container">
+        @if (wishlistProducts().length > 0) {
+        <div class="wishlist-list">
+            @for (product of wishlistProducts(); track product.id) {
+            <article class="wishlist-item">
+                <a [routerLink]="['/product', product.id]" class="wishlist-item__image">
+                    <img [src]="product.image" [alt]="product.name" />
+                </a>
+                <div class="wishlist-item__details">
+                    <p class="wishlist-item__meta">{{ product.brand }} | {{ product.family }}</p>
+                    <h3><a [routerLink]="['/product', product.id]">{{ product.name }}</a></h3>
+                    <p class="wishlist-item__desc">{{ product.description }}</p>
+                    <p class="wishlist-item__price">{{ product.price | currency: 'USD' }}</p>
+                </div>
+                <div class="wishlist-item__actions">
+                    <button type="button" class="btn btn--primary btn--sm" (click)="addToCart(product.id)">Add to Cart</button>
+                    <button type="button" class="btn btn--outline btn--sm" (click)="removeFromWishlist(product.id)">Remove</button>
+                </div>
+            </article>
+            }
+        </div>
+        } @else {
+        <div class="empty-state">
+            <h3>No saved fragrances yet</h3>
+            <p>Browse our collection and tap the heart icon to save your favourites.</p>
+            <a routerLink="/collection" class="btn btn--primary">Explore Collection</a>
+        </div>
+        }
+    </section>
+</main>

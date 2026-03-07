@@ -1,25 +1,26 @@
-<main class="fade-in">
-    <!-- Hero Section -->
-    <section class="hero">
+<main class="fade-in home-page">
+    <section class="hero" id="hero">
         <div class="hero__content container">
-            <p class="hero__subtitle">The Art of Scent</p>
-            <h1 class="hero__title">Elegance in<br>Every Breath</h1>
-            <p class="hero__description">Explore our curated collection of rare essences and timeless compositions
-                designed for the discerning individual.</p>
+            <p class="hero__subtitle">Aurelia Maison de Parfum</p>
+            <h1 class="hero__title">Unleash the Essence of Luxury</h1>
+            <p class="hero__description">
+                Sculpted for connoisseurs, our fragrances blend rare naturals and modern perfumery into timeless signatures.
+            </p>
             <div class="hero__actions">
-                <a routerLink="/women" class="btn btn--primary">Discover Women</a>
-                <a routerLink="/men" class="btn btn--outline">Discover Men</a>
+                <a routerLink="/collection" class="btn btn--primary">Shop Collection</a>
+                <a routerLink="/best-sellers" class="btn btn--outline">Best Sellers</a>
             </div>
+        </div>
+        <div class="hero__bottle" aria-hidden="true">
+            <div class="bottle-3d"></div>
         </div>
     </section>
 
-    <!-- Featured Products -->
-    <section class="featured container">
+    <section id="collections" class="featured container">
         <div class="section-title">
-            <h2>Featured Creations</h2>
-            <p>The essence of the season</p>
+            <h2>Featured Collections</h2>
+            <p>Minimal silhouettes, maximal olfactory character</p>
         </div>
-
         <div class="product-grid">
             @for (product of featuredProducts(); track product.id) {
             <app-product-card [product]="product"></app-product-card>
@@ -27,98 +28,174 @@
         </div>
     </section>
 
-    <!-- Brand Intro -->
-    <section class="brand-intro">
-        <div class="container brand-intro__grid">
-            <div class="brand-intro__image">
-                <img src="https://images.unsplash.com/photo-1590156221122-c748e78f2a7a?auto=format&fit=crop&q=80&w=1000"
-                    alt="Fragrance creation">
-            </div>
-            <div class="brand-intro__text">
-                <p class="overline">Our Heritage</p>
-                <h2>Crafting Liquid Emotion</h2>
-                <p>At Luminaire, we believe a fragrance is more than just a scent—it's a silent signature, a memory
-                    captured in a bottle. Our master perfumers travel the globe to source the finest natural raw
-                    materials, blending traditional techniques with modern innovation to create olfactory masterpieces.
-                </p>
-                <a routerLink="/about" class="btn btn--outline">Discover Our Story</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Collections CTA -->
-    <section class="collections container">
-        <div class="collection-item men">
-            <div class="collection-content">
-                <h3>L'Homme</h3>
-                <p>Strength and Sophistication</p>
-                <a routerLink="/men" class="btn btn--outline">Shop Men</a>
-            </div>
-        </div>
-        <div class="collection-item women">
-            <div class="collection-content">
-                <h3>La Femme</h3>
-                <p>Grace and Radiance</p>
-                <a routerLink="/women" class="btn btn--outline">Shop Women</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="process container">
+    <section id="best-sellers" class="best-sellers container">
         <div class="section-title">
-            <h2>From Field to Flacon</h2>
-            <p>Our meticulous process of creation</p>
+            <h2>Best Selling Perfumes</h2>
+            <p>Iconic signatures loved by our global clientele</p>
         </div>
-        <div class="process__grid">
-            <div class="process__step">
-                <span class="process__number">01</span>
-                <h3>Ethical Sourcing</h3>
-                <p>We work directly with local farmers in Grasse, Haiti, and Morocco to source the purest raw materials.
+        <div class="product-grid">
+            @for (product of bestSellers(); track product.id) {
+            <app-product-card [product]="product"></app-product-card>
+            }
+        </div>
+    </section>
+
+    <section class="families container">
+        <div class="section-title">
+            <h2>Fragrance Categories</h2>
+            <p>Floral, Woody, Citrus, Oriental</p>
+        </div>
+        <div class="families__chips">
+            @for (family of families; track family) {
+            <button type="button" [class.active]="selectedFamily() === family" (click)="selectFamily(family)">{{ family }}</button>
+            }
+        </div>
+        <div class="product-grid">
+            @for (product of familyProducts(); track product.id) {
+            <app-product-card [product]="product"></app-product-card>
+            }
+        </div>
+    </section>
+
+    <section class="brand-story">
+        <div class="container brand-story__grid">
+            <div class="story-image">
+                <img src="/images/crafting.png" alt="Aurelia perfumer in atelier" />
+            </div>
+            <div class="story-content">
+                <p class="overline">Brand Story</p>
+                <h2>Modern Luxury, Timeless Craft</h2>
+                <p>
+                    Aurelia was founded to reinterpret haute perfumery through restraint and precision. Every formula is aged,
+                    refined, and bottled in our Paris atelier, where craftsmanship meets contemporary elegance.
                 </p>
-            </div>
-            <div class="process__step">
-                <span class="process__number">02</span>
-                <h3>Artisanal Extraction</h3>
-                <p>Using slow steam distillation and co2 extraction to preserve the delicate olfactory profile of each
-                    ingredient.</p>
-            </div>
-            <div class="process__step">
-                <span class="process__number">03</span>
-                <h3>Master Blending</h3>
-                <p>Each formula is aged for six months in stainless steel vats to allow the molecules to harmonize
-                    perfectly.</p>
-            </div>
-            <div class="process__step">
-                <span class="process__number">04</span>
-                <h3>Signature Bottling</h3>
-                <p>Hand-poured and inspected in our Paris atelier, ensuring every bottle meets our exacting standards.
-                </p>
+                <a routerLink="/about" class="btn btn--outline">Read Our Story</a>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="testimonial-slider">
-                <div class="testimonial-item">
-                    <blockquote>"A Luminaire scent is like a second skin. It doesn't announce your arrival; it lingers
-                        like a beautiful memory after you've left."</blockquote>
-                    <cite>— Elena Vance, Fashion Critic</cite>
+    <section class="testimonials container">
+        <div class="section-title">
+            <h2>Testimonials</h2>
+            <p>Voices from collectors and stylists</p>
+        </div>
+        <div class="testimonial-grid">
+            @for (item of testimonials; track item.author) {
+            <article>
+                <blockquote>"{{ item.quote }}"</blockquote>
+                <cite>{{ item.author }}</cite>
+            </article>
+            }
+        </div>
+    </section>
+
+    <section class="experience container">
+        <div class="experience__grid">
+            <article class="quiz-card">
+                <h3>Perfume Recommendation Quiz</h3>
+                <p>Select your preferred family and concentration style.</p>
+                <div class="button-row">
+                    @for (family of families; track family) {
+                    <button type="button" [class.active]="quizFamily() === family" (click)="setQuizFamily(family)">{{ family }}</button>
+                    }
                 </div>
-            </div>
+                <div class="button-row">
+                    <button type="button" [class.active]="quizIntensity() === 'Light'" (click)="setQuizIntensity('Light')">Light</button>
+                    <button type="button" [class.active]="quizIntensity() === 'Rich'" (click)="setQuizIntensity('Rich')">Rich</button>
+                </div>
+                @if (quizResult(); as match) {
+                <a [routerLink]="['/product', match.id]" class="result-link">Recommended: {{ match.name }}</a>
+                }
+            </article>
+
+            <article class="mood-card">
+                <h3>Fragrance Mood Selector</h3>
+                <p>Switch your scent profile by mood and occasion.</p>
+                <div class="button-row">
+                    @for (mood of moodOptions; track mood) {
+                    <button type="button" [class.active]="selectedMood() === mood" (click)="selectMood(mood)">{{ mood }}</button>
+                    }
+                </div>
+                <div class="mini-products">
+                    @for (product of recommendedProducts(); track product.id) {
+                    <a [routerLink]="['/product', product.id]">{{ product.name }}</a>
+                    }
+                </div>
+            </article>
         </div>
     </section>
 
-    <!-- Newsletter -->
-    <section class="newsletter container">
+    <section class="scent-guide container">
+        <div class="section-title">
+            <h2>Interactive Scent Guide</h2>
+            <p>Discover how notes evolve from opening to dry-down</p>
+        </div>
+        <div class="scent-guide__timeline">
+            <article>
+                <h4>Top Notes</h4>
+                <p>Immediate sparkle: bergamot, mandarin, pink pepper.</p>
+            </article>
+            <article>
+                <h4>Heart Notes</h4>
+                <p>Character core: jasmine, rose, incense, iris.</p>
+            </article>
+            <article>
+                <h4>Base Notes</h4>
+                <p>Lasting trail: sandalwood, amber, musk, vetiver.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="comparison container">
+        <div class="section-title">
+            <h2>Product Comparison</h2>
+            <p>Select up to three fragrances to compare style and performance</p>
+        </div>
+        <div class="comparison__actions">
+            @for (product of bestSellers().slice(0, 6); track product.id) {
+            <button type="button" [class.active]="comparisonIds().includes(product.id)" (click)="toggleCompare(product.id)">
+                {{ product.name }}
+            </button>
+            }
+        </div>
+        <div class="comparison__table">
+            @if (comparedProducts().length > 0) {
+            <table>
+                <thead>
+                    <tr>
+                        <th>Perfume</th>
+                        <th>Family</th>
+                        <th>Intensity</th>
+                        <th>Longevity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (product of comparedProducts(); track product.id) {
+                    <tr>
+                        <td><a [routerLink]="['/product', product.id]">{{ product.name }}</a></td>
+                        <td>{{ product.family }}</td>
+                        <td>{{ product.intensity }}/5</td>
+                        <td>{{ product.longevity }}/5</td>
+                        <td>{{ product.price | currency: 'USD' }}</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            } @else {
+            <p class="comparison__empty">Select fragrances above to start comparing.</p>
+            }
+        </div>
+    </section>
+
+    <section class="newsletter container" id="contact">
         <div class="newsletter__card">
             <div class="newsletter__content">
-                <h2>Join The Inner Circle</h2>
-                <p>Be the first to experience our seasonal limited releases and private boutique events.</p>
+                <p class="overline">Newsletter</p>
+                <h2>Join the Private Circle</h2>
+                <p>Receive launch previews, gifting edits, and private consultation invites.</p>
                 <form class="newsletter__form">
-                    <input type="email" placeholder="Enter your email address">
+                    <input type="email" placeholder="Your email address" />
                     <button type="submit" class="btn btn--primary">Subscribe</button>
                 </form>
             </div>

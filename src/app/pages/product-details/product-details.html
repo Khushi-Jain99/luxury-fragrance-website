@@ -1,0 +1,107 @@
+<main class="page-container fade-in">
+  @if (product(); as currentProduct) {
+  <section class="product-hero container">
+    <div class="gallery">
+      <div class="gallery__main">
+        <img [src]="selectedImage() || currentProduct.image" alt="Luxury perfume detail image" title="Luxury perfume detail image" />
+      </div>
+      <div class="gallery__thumbs">
+        <button *ngFor="let image of currentProduct.gallery" type="button" [class.active]="selectedImage() === image" (click)="selectImage(image)" title="Product gallery preview">
+          <img [src]="image" alt="Fragrance gallery preview" title="Fragrance gallery preview" />
+        </button>
+      </div>
+    </div>
+
+    <div class="details">
+      <p class="overline">{{ currentProduct.brand }} | {{ currentProduct.family }}</p>
+      <h1>{{ currentProduct.name }}</h1>
+      <p class="description">{{ currentProduct.longDescription }}</p>
+
+      <div class="price-row">
+        <p class="price">{{ currentProduct.price | currency: 'USD' }}</p>
+        <p class="rating">{{ currentProduct.rating }} / 5 ({{ currentProduct.reviews }} reviews)</p>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn--primary" type="button" (click)="addToCart()">Add to Cart</button>
+        <button class="btn btn--outline" type="button" (click)="toggleWishlist()">
+          {{ wishlist.isInWishlist(currentProduct.id) ? 'Saved in Wishlist' : 'Add to Wishlist' }}
+        </button>
+      </div>
+
+      <div class="meta">
+        <div>
+          <span>Longevity</span>
+          <p>
+            @for (point of indicators(currentProduct.longevity); track $index) {
+            <i [class.active]="point"></i>
+            }
+          </p>
+        </div>
+        <div>
+          <span>Intensity</span>
+          <p>
+            @for (point of indicators(currentProduct.intensity); track $index) {
+            <i [class.active]="point"></i>
+            }
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="notes container">
+    <h2>Fragrance Notes</h2>
+    <div class="notes__grid">
+      <article>
+        <h3>Top Notes</h3>
+        <ul>
+          <li *ngFor="let note of currentProduct.topNotes">{{ note }}</li>
+        </ul>
+      </article>
+      <article>
+        <h3>Heart Notes</h3>
+        <ul>
+          <li *ngFor="let note of currentProduct.heartNotes">{{ note }}</li>
+        </ul>
+      </article>
+      <article>
+        <h3>Base Notes</h3>
+        <ul>
+          <li *ngFor="let note of currentProduct.baseNotes">{{ note }}</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="reviews container" id="contact">
+    <h2>Customer Reviews</h2>
+    <div class="reviews__grid">
+      <article>
+        <strong>Amelia R.</strong>
+        <p>"An elegant scent trail that feels couture and intimate. Lasts all day without feeling heavy."</p>
+      </article>
+      <article>
+        <strong>Julian K.</strong>
+        <p>"The opening is striking and the dry down is addictive. This is luxury perfumery done right."</p>
+      </article>
+      <article>
+        <strong>Harper T.</strong>
+        <p>"Balanced, complex, and beautifully blended. The bottle and presentation are stunning too."</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="related container">
+    <div class="section-title">
+      <h2>Related Perfumes</h2>
+      <p>Explore complementary signatures</p>
+    </div>
+    <div class="product-grid">
+      @for (related of relatedProducts(); track related.id) {
+      <app-product-card [product]="related"></app-product-card>
+      }
+    </div>
+  </section>
+  }
+</main>
