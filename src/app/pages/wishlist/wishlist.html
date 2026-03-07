@@ -13,7 +13,7 @@
             @for (product of wishlistProducts(); track product.id) {
             <article class="wishlist-item">
                 <a [routerLink]="['/product', product.id]" class="wishlist-item__image">
-                    <img [src]="product.image" [alt]="product.name" />
+                    <img appImgFallback [src]="product.image" [alt]="product.name" />
                 </a>
                 <div class="wishlist-item__details">
                     <p class="wishlist-item__meta">{{ product.brand }} | {{ product.family }}</p>

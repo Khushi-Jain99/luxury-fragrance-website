@@ -6,11 +6,12 @@ import { CartService } from '../../services/cart';
 import { ProductService } from '../../services/product';
 import { SeoService } from '../../services/seo';
 import { WishlistService } from '../../services/wishlist';
+import { ImgFallbackDirective } from '../../directives/img-fallback';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [CommonModule, ProductCard],
+  imports: [CommonModule, ProductCard, ImgFallbackDirective],
   templateUrl: './product-details.html',
   styleUrl: './product-details.scss'
 })

@@ -5,11 +5,12 @@ import { ProductService } from '../../services/product';
 import { WishlistService } from '../../services/wishlist';
 import { CartService } from '../../services/cart';
 import { SeoService } from '../../services/seo';
+import { ImgFallbackDirective } from '../../directives/img-fallback';
 
 @Component({
   selector: 'app-wishlist',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, ImgFallbackDirective],
   templateUrl: './wishlist.html',
   styleUrl: './wishlist.scss',
 })

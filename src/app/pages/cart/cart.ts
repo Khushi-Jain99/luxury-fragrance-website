@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { CartService } from '../../services/cart';
 import { Product, ProductService } from '../../services/product';
 import { SeoService } from '../../services/seo';
+import { ImgFallbackDirective } from '../../directives/img-fallback';
 
 interface CartItem {
   product: Product;
@@ -14,7 +15,7 @@ interface CartItem {
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, ImgFallbackDirective],
   templateUrl: './cart.html',
   styleUrl: './cart.scss',
 })

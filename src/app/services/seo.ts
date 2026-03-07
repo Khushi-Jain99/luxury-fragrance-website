@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Title, Meta } from '@angular/platform-browser';
+import { Meta } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SeoService {
-  constructor(private title: Title, private meta: Meta) { }
+  constructor(private meta: Meta) { }
 
-  updateTitle(title: string) {
-    this.title.setTitle(`${title} | Luminaire Fragrances`);
-  }
+  /** Title is kept consistent across all pages via index.html */
+  updateTitle(_title: string) { }
 
   updateMeta(description: string) {
     this.meta.updateTag({ name: 'description', content: description });

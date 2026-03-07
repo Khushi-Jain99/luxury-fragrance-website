@@ -1,4 +1,4 @@
-import { Injectable, Signal, computed, signal } from '@angular/core';
+﻿import { Injectable, Signal, computed, signal } from '@angular/core';
 
 export type ProductCategory = 'Men' | 'Women' | 'Sample' | 'Unisex';
 export type FragranceFamily = 'Floral' | 'Woody' | 'Citrus' | 'Oriental';
@@ -33,7 +33,7 @@ export class ProductService {
     {
       id: 1,
       name: 'Oud Noir',
-      brand: 'Luminaire',
+      brand: 'Aurelia',
       description: 'A deep, mysterious blend of agarwood and smoked incense.',
       longDescription:
         'An opulent dark oud composition wrapped in smoldering frankincense and polished saffron. Designed for evening wear with remarkable projection and graceful dry-down.',
@@ -60,7 +60,7 @@ export class ProductService {
     {
       id: 2,
       name: 'Rose Eclat',
-      brand: 'Luminaire',
+      brand: 'Aurelia',
       description: 'Velvety damask rose with notes of pink pepper and vanilla.',
       longDescription:
         'A couture floral fragrance where rose petals bloom over creamy vanilla and white musk. Sophisticated, luminous, and ideal for elegant daytime wear.',
@@ -87,7 +87,7 @@ export class ProductService {
     {
       id: 3,
       name: 'Cedrat Blanc',
-      brand: 'Luminaire',
+      brand: 'Aurelia',
       description: 'Zesty citrus balanced with Himalayan cedarwood.',
       longDescription:
         'Bright and sparkling citrus meets textured cedar to create an energetic scent profile with modern restraint. A refined warm-weather signature.',
@@ -113,7 +113,7 @@ export class ProductService {
     {
       id: 4,
       name: 'Ambre Soir',
-      brand: 'Luminaire',
+      brand: 'Aurelia',
       description: 'Warm amber and labdanum for unforgettable evenings.',
       longDescription:
         'A sensual amber story with a resinous heart and velvety base. Crafted for twilight gatherings and candlelit moments.',
@@ -139,7 +139,7 @@ export class ProductService {
     {
       id: 5,
       name: 'The Discovery Set',
-      brand: 'Luminaire',
+      brand: 'Aurelia',
       description: 'Five signature scents in 2ml sample vials.',
       longDescription:
         'A curated exploration of our iconic compositions, each sample designed to be worn at least twice to reveal full evolution on skin.',
@@ -166,7 +166,7 @@ export class ProductService {
     {
       id: 6,
       name: 'Noir Intense',
-      brand: 'Luminaire',
+      brand: 'Aurelia',
       description: 'Concentrated essence of darkness and grace.',
       longDescription:
         'An extrait concentration with immersive spice and woods. Distinctive yet balanced, made for those who prefer a commanding signature.',
@@ -192,7 +192,7 @@ export class ProductService {
     {
       id: 7,
       name: 'Floral Muse',
-      brand: 'Luminaire',
+      brand: 'Aurelia',
       description: 'A bouquet of white flowers and crystalline musk.',
       longDescription:
         'An airy floral design for everyday sophistication. Transparent petals and clean musk create an effortless, polished aura.',
@@ -217,7 +217,7 @@ export class ProductService {
     {
       id: 8,
       name: 'Midnight Musk',
-      brand: 'Luminaire',
+      brand: 'Aurelia',
       description: '2ml sample of our best-selling evening fragrance.',
       longDescription:
         'A compact sample of our seductive musk-forward profile, ideal for travel and evening touchups.',
@@ -242,7 +242,7 @@ export class ProductService {
     {
       id: 9,
       name: 'Cuir Royal',
-      brand: 'Luminaire',
+      brand: 'Aurelia',
       description: 'Rich Tuscan leather and tobacco leaf with a hint of raspberry.',
       longDescription:
         'A refined leather fragrance where juicy raspberry sparks against smoky tobacco and suede. Distinguished and memorable.',
@@ -268,7 +268,7 @@ export class ProductService {
     {
       id: 10,
       name: 'Jasmin Pur',
-      brand: 'Luminaire',
+      brand: 'Aurelia',
       description: 'Hand-picked night-blooming jasmine from the fields of Grasse.',
       longDescription:
         'An intimate jasmine soliflore elevated with subtle green nuances and a creamy dry-down for sophisticated floral lovers.',
@@ -294,7 +294,7 @@ export class ProductService {
     {
       id: 11,
       name: 'Vetiver Terra',
-      brand: 'Luminaire',
+      brand: 'Aurelia',
       description: 'Earthy vetiver rooted in fresh soil and mineral accords.',
       longDescription:
         'A modern vetiver profile that feels crisp, grounded, and quietly confident, with subtle smoky undertones.',
@@ -319,7 +319,7 @@ export class ProductService {
     {
       id: 12,
       name: 'Santal Mystique',
-      brand: 'Luminaire',
+      brand: 'Aurelia',
       description: 'Creamy Australian sandalwood with exotic spices.',
       longDescription:
         'Creamy sandalwood meets cardamom and warm skin musk in a smooth, comforting signature scent.',
@@ -344,7 +344,7 @@ export class ProductService {
     {
       id: 13,
       name: 'Oud Noir Sample',
-      brand: 'Luminaire',
+      brand: 'Aurelia',
       description: '2ml sample of our mysterious Oud Noir.',
       longDescription:
         'A compact format of Oud Noir for on-the-go wear and discovery layering sessions.',

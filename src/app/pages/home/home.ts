@@ -4,11 +4,12 @@ import { RouterLink } from '@angular/router';
 import { FragranceFamily, Mood, ProductService } from '../../services/product';
 import { SeoService } from '../../services/seo';
 import { ProductCard } from '../../components/product-card/product-card';
+import { ImgFallbackDirective } from '../../directives/img-fallback';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, ProductCard],
+  imports: [CommonModule, RouterLink, ProductCard, ImgFallbackDirective],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { Product, ProductService } from '../../services/product';
 import { WishlistService } from '../../services/wishlist';
 import { CartService } from '../../services/cart';
+import { ImgFallbackDirective } from '../../directives/img-fallback';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, CommonModule],
+  imports: [RouterLink, RouterLinkActive, CommonModule, ImgFallbackDirective],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
 })

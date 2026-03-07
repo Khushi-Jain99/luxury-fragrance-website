@@ -80,7 +80,7 @@
       <ul class="search-panel__results">
         <li *ngFor="let product of suggestions(); trackBy: trackByProductId">
           <a [routerLink]="['/product', product.id]" (click)="closeSearch()">
-            <img [src]="product.image" alt="Fragrance search result" title="Fragrance search result" />
+            <img appImgFallback [src]="product.image" alt="Fragrance search result" title="Fragrance search result" />
             <span>
               <strong>{{ product.name }}</strong>
               <small>{{ product.family }} | {{ product.category }}</small>

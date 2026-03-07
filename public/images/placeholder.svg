@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#F7F2E8"/>
+  <g opacity="0.25">
+    <!-- Bottle silhouette -->
+    <rect x="170" y="100" width="60" height="30" rx="6" fill="#C7A554"/>
+    <rect x="180" y="130" width="40" height="20" fill="#C7A554"/>
+    <path d="M150 150h100c8 0 14 12 14 28v100c0 16-6 28-14 28H150c-8 0-14-12-14-28V178c0-16 6-28 14-28Z" fill="#C7A554"/>
+    <text x="200" y="260" font-family="Georgia,serif" font-size="40" font-weight="bold" fill="#F7F2E8" text-anchor="middle">A</text>
+  </g>
+  <text x="200" y="340" font-family="Georgia,serif" font-size="16" fill="#C7A554" text-anchor="middle" opacity="0.6">Image unavailable</text>
+</svg>

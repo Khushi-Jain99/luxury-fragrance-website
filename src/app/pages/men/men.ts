@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/product';
 import { SeoService } from '../../services/seo';
 import { ProductCard } from '../../components/product-card/product-card';
+import { ImgFallbackDirective } from '../../directives/img-fallback';
 
 @Component({
   selector: 'app-men',
   standalone: true,
-  imports: [CommonModule, ProductCard],
+  imports: [CommonModule, ProductCard, ImgFallbackDirective],
   templateUrl: './men.html',
   styleUrl: './men.scss',
 })

@@ -2,11 +2,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SeoService } from '../../services/seo';
+import { ImgFallbackDirective } from '../../directives/img-fallback';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ImgFallbackDirective],
   templateUrl: './about.html',
   styleUrl: './about.scss',
 })
@@ -24,7 +25,7 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
     this.seo.updateTitle('Our Story');
-    this.seo.updateMeta('Learn about the heritage and vision behind Luminaire fragrances.');
+    this.seo.updateMeta('Learn about the heritage and vision behind Aurelia fragrances.');
   }
 
   onSubmit() {

@@ -4,11 +4,12 @@ import { Product } from '../../services/product';
 import { RouterLink } from '@angular/router';
 import { WishlistService } from '../../services/wishlist';
 import { CartService } from '../../services/cart';
+import { ImgFallbackDirective } from '../../directives/img-fallback';
 
 @Component({
   selector: 'app-product-card',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, ImgFallbackDirective],
   templateUrl: './product-card.html',
   styleUrl: './product-card.scss',
 })

@@ -3,11 +3,11 @@
   <section class="product-hero container">
     <div class="gallery">
       <div class="gallery__main">
-        <img [src]="selectedImage() || currentProduct.image" alt="Luxury perfume detail image" title="Luxury perfume detail image" />
+        <img appImgFallback [src]="selectedImage() || currentProduct.image" alt="Luxury perfume detail image" title="Luxury perfume detail image" />
       </div>
       <div class="gallery__thumbs">
         <button *ngFor="let image of currentProduct.gallery" type="button" [class.active]="selectedImage() === image" (click)="selectImage(image)" title="Product gallery preview">
-          <img [src]="image" alt="Fragrance gallery preview" title="Fragrance gallery preview" />
+          <img appImgFallback [src]="image" alt="Fragrance gallery preview" title="Fragrance gallery preview" />
         </button>
       </div>
     </div>
