@@ -51,7 +51,7 @@
                     <span>Total</span>
                     <span>{{ total() | currency: 'USD' }}</span>
                 </div>
-                <button type="button" class="btn btn--primary btn--full">Proceed to Checkout</button>
+                <button type="button" class="btn btn--primary btn--full" (click)="proceedToCheckout()">Proceed to Checkout</button>
                 <button type="button" class="btn btn--outline btn--full" (click)="clearCart()">Clear Cart</button>
             </aside>
         </div>

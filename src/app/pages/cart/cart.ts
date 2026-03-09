@@ -1,6 +1,6 @@
 import { Component, OnInit, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CartService } from '../../services/cart';
 import { Product, ProductService } from '../../services/product';
 import { SeoService } from '../../services/seo';
@@ -22,6 +22,7 @@ interface CartItem {
 export class CartComponent implements OnInit {
   private seo = inject(SeoService);
   private products = inject(ProductService);
+  private router = inject(Router);
   cart = inject(CartService);
 
   cartItems = computed<CartItem[]>(() => {
@@ -57,5 +58,11 @@ export class CartComponent implements OnInit {
 
   clearCart(): void {
     this.cart.clear();
+  }
+
+  proceedToCheckout(): void {
+    if (this.cartItems().length > 0) {
+      this.router.navigate(['/checkout']);
+    }
   }
 }

@@ -10,6 +10,8 @@ import { BestSellersComponent } from './pages/best-sellers/best-sellers';
 import { ContactComponent } from './pages/contact/contact';
 import { WishlistComponent } from './pages/wishlist/wishlist';
 import { CartComponent } from './pages/cart/cart';
+import { CheckoutComponent } from './pages/checkout/checkout';
+import { OrderSuccessComponent } from './pages/order-success/order-success';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -19,6 +21,8 @@ export const routes: Routes = [
     { path: 'contact', component: ContactComponent },
     { path: 'wishlist', component: WishlistComponent },
     { path: 'cart', component: CartComponent },
+    { path: 'checkout', component: CheckoutComponent },
+    { path: 'order-success', component: OrderSuccessComponent },
     { path: 'men', component: MenComponent },
     { path: 'women', component: WomenComponent },
     { path: 'samples', component: SamplesComponent },
