@@ -92,7 +92,7 @@ export class ProductService {
       longDescription:
         'Bright and sparkling citrus meets textured cedar to create an energetic scent profile with modern restraint. A refined warm-weather signature.',
       price: 180,
-      image: 'https://images.unsplash.com/photo-1523293182086-7651a899d22f?auto=format&fit=crop&q=80&w=900',
+      image: 'https://images.unsplash.com/photo-1458538977777-0549b2370168?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVyZnVtZXxlbnwwfHwwfHx8MA%3D%3D',
       gallery: [
         'https://images.unsplash.com/photo-1523293182086-7651a899d22f?auto=format&fit=crop&q=80&w=900',
         'https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&q=80&w=900',
@@ -118,7 +118,7 @@ export class ProductService {
       longDescription:
         'A sensual amber story with a resinous heart and velvety base. Crafted for twilight gatherings and candlelit moments.',
       price: 210,
-      image: 'https://images.unsplash.com/photo-1583445013765-46c2049d5045?auto=format&fit=crop&q=80&w=900',
+      image: 'https://plus.unsplash.com/premium_photo-1670445045282-36648e89af6b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cGVyZnVtZXxlbnwwfHwwfHx8MA%3D%3D',
       gallery: [
         'https://images.unsplash.com/photo-1583445013765-46c2049d5045?auto=format&fit=crop&q=80&w=900',
         'https://images.unsplash.com/photo-1557827334-1823ca87c58d?auto=format&fit=crop&q=80&w=900',
@@ -144,7 +144,7 @@ export class ProductService {
       longDescription:
         'A curated exploration of our iconic compositions, each sample designed to be worn at least twice to reveal full evolution on skin.',
       price: 45,
-      image: 'https://images.unsplash.com/photo-1592914610354-fd35984456b2?auto=format&fit=crop&q=80&w=900',
+      image: 'https://images.unsplash.com/photo-1543422655-ac1c6ca993ed?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D',
       gallery: [
         'https://images.unsplash.com/photo-1592914610354-fd35984456b2?auto=format&fit=crop&q=80&w=900',
         'https://images.unsplash.com/photo-1616601432703-a1288647e30d?auto=format&fit=crop&q=80&w=900',
@@ -171,7 +171,7 @@ export class ProductService {
       longDescription:
         'An extrait concentration with immersive spice and woods. Distinctive yet balanced, made for those who prefer a commanding signature.',
       price: 280,
-      image: 'https://images.unsplash.com/photo-1595425959632-343516309831?auto=format&fit=crop&q=80&w=900',
+      image: 'https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D',
       gallery: [
         'https://images.unsplash.com/photo-1595425959632-343516309831?auto=format&fit=crop&q=80&w=900',
         'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&q=80&w=900',
@@ -222,7 +222,7 @@ export class ProductService {
       longDescription:
         'A compact sample of our seductive musk-forward profile, ideal for travel and evening touchups.',
       price: 12,
-      image: 'https://images.unsplash.com/photo-1615485499978-1279c3d6ac3d?auto=format&fit=crop&q=80&w=900',
+      image: 'https://plus.unsplash.com/premium_photo-1678449464118-75786d816fac?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D',
       gallery: [
         'https://images.unsplash.com/photo-1615485499978-1279c3d6ac3d?auto=format&fit=crop&q=80&w=900',
         'https://images.unsplash.com/photo-1592914610354-fd35984456b2?auto=format&fit=crop&q=80&w=900',
@@ -266,32 +266,6 @@ export class ProductService {
       bestSeller: true
     },
     {
-      id: 10,
-      name: 'Jasmin Pur',
-      brand: 'Aurelia',
-      description: 'Hand-picked night-blooming jasmine from the fields of Grasse.',
-      longDescription:
-        'An intimate jasmine soliflore elevated with subtle green nuances and a creamy dry-down for sophisticated floral lovers.',
-      price: 220,
-      image: 'https://images.unsplash.com/photo-1615485925600-97237c4fc1ec?auto=format&fit=crop&q=80&w=900',
-      gallery: [
-        'https://images.unsplash.com/photo-1615485925600-97237c4fc1ec?auto=format&fit=crop&q=80&w=900',
-        'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=900',
-        'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=900'
-      ],
-      category: 'Women',
-      family: 'Floral',
-      rating: 4.9,
-      reviews: 176,
-      topNotes: ['Neroli', 'Green Mandarin'],
-      heartNotes: ['Jasmine Grandiflorum', 'Orange Blossom'],
-      baseNotes: ['Silk Musk', 'Sandalwood'],
-      longevity: 4,
-      intensity: 3,
-      moodTags: ['Romantic', 'Elegant'],
-      bestSeller: true
-    },
-    {
       id: 11,
       name: 'Vetiver Terra',
       brand: 'Aurelia',
@@ -299,7 +273,7 @@ export class ProductService {
       longDescription:
         'A modern vetiver profile that feels crisp, grounded, and quietly confident, with subtle smoky undertones.',
       price: 185,
-      image: 'https://images.unsplash.com/photo-1592701828557-0749021870bd?auto=format&fit=crop&q=80&w=900',
+      image: 'https://plus.unsplash.com/premium_photo-1679064286615-e5e4d4940dfc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D',
       gallery: [
         'https://images.unsplash.com/photo-1592701828557-0749021870bd?auto=format&fit=crop&q=80&w=900',
         'https://images.unsplash.com/photo-1523293182086-7651a899d22f?auto=format&fit=crop&q=80&w=900',
@@ -324,7 +298,7 @@ export class ProductService {
       longDescription:
         'Creamy sandalwood meets cardamom and warm skin musk in a smooth, comforting signature scent.',
       price: 205,
-      image: 'https://images.unsplash.com/photo-1557827334-1823ca87c58d?auto=format&fit=crop&q=80&w=900',
+      image: 'https://images.unsplash.com/photo-1622618991746-fe6004db3a47?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlcmZ1bWV8ZW58MHx8MHx8fDA%3D',
       gallery: [
         'https://images.unsplash.com/photo-1557827334-1823ca87c58d?auto=format&fit=crop&q=80&w=900',
         'https://images.unsplash.com/photo-1583445013765-46c2049d5045?auto=format&fit=crop&q=80&w=900',
