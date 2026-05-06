@@ -83,6 +83,24 @@
     }
 }
 
+.form-error {
+    color: #9d4a4a;
+    font-size: 0.78rem;
+}
+
+.form-status {
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    &--success {
+        color: #4b7a4a;
+    }
+
+    &--error {
+        color: #9d4a4a;
+    }
+}
+
 .success-message {
     text-align: center;
     padding: 4rem 2rem;

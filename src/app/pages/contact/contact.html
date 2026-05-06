@@ -25,20 +25,20 @@
             </div>
 
             <div class="contact-form-wrapper">
-                @if (submitted) {
-                <div class="success-message">
-                    <h3>Thank You</h3>
-                    <p>A fragrance specialist will be in touch shortly.</p>
-                </div>
-                } @else {
                 <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" formControlName="name" placeholder="Your full name" />
+                        @if (contactForm.get('name')?.touched && contactForm.get('name')?.invalid) {
+                        <small class="form-error">Please enter your name.</small>
+                        }
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" formControlName="email" placeholder="Your email address" />
+                        @if (contactForm.get('email')?.touched && contactForm.get('email')?.invalid) {
+                        <small class="form-error">Please enter a valid email.</small>
+                        }
                     </div>
                     <div class="form-group">
                         <label for="subject">Subject</label>
@@ -47,10 +47,20 @@
                     <div class="form-group">
                         <label for="message">Message</label>
                         <textarea id="message" formControlName="message" rows="5" placeholder="Tell us more..."></textarea>
+                        @if (contactForm.get('message')?.touched && contactForm.get('message')?.invalid) {
+                        <small class="form-error">Please enter a message.</small>
+                        }
                     </div>
-                    <button type="submit" class="btn btn--primary" [disabled]="contactForm.invalid">Send Message</button>
+                    @if (status === 'success') {
+                    <p class="form-status form-status--success">Message sent successfully.</p>
+                    }
+                    @if (status === 'error') {
+                    <p class="form-status form-status--error">Failed to send message, try again.</p>
+                    }
+                    <button type="submit" class="btn btn--primary" [disabled]="contactForm.invalid || isSending">
+                        {{ isSending ? 'Sending...' : 'Send Message' }}
+                    </button>
                 </form>
-                }
             </div>
         </div>
     </section>

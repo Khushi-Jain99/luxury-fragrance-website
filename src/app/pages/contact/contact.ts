@@ -1,7 +1,9 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { finalize } from 'rxjs';
 import { SeoService } from '../../services/seo';
+import { ContactService } from '../../services/contact';
 
 @Component({
   selector: 'app-contact',
@@ -13,6 +15,7 @@ import { SeoService } from '../../services/seo';
 export class ContactComponent implements OnInit {
   private seo = inject(SeoService);
   private fb = inject(FormBuilder);
+  private contactService = inject(ContactService);
 
   contactForm: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
@@ -21,7 +24,8 @@ export class ContactComponent implements OnInit {
     message: ['', [Validators.required, Validators.minLength(10)]]
   });
 
-  submitted = false;
+  status: 'idle' | 'sending' | 'success' | 'error' = 'idle';
+  isSending = false;
 
   ngOnInit(): void {
     this.seo.updateTitle('Contact');
@@ -29,10 +33,25 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.contactForm.valid) {
-      this.submitted = true;
-      this.contactForm.reset();
-      setTimeout(() => (this.submitted = false), 5000);
+    if (this.contactForm.invalid || this.isSending) {
+      this.contactForm.markAllAsTouched();
+      return;
     }
+
+    this.isSending = true;
+    this.status = 'sending';
+
+    this.contactService
+      .sendMessage(this.contactForm.value)
+      .pipe(finalize(() => (this.isSending = false)))
+      .subscribe({
+        next: () => {
+          this.status = 'success';
+          this.contactForm.reset();
+        },
+        error: () => {
+          this.status = 'error';
+        }
+      });
   }
 }

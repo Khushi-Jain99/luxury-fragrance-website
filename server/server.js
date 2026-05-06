@@ -1,47 +1,68 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
-const Order = require('./models/Order');
+const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/luxury-fragrance';
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-// ── POST /api/orders ──────────────────────────────────
-app.post('/api/orders', async (req, res) => {
-  try {
-    const { products, totalPrice, shippingDetails, paymentMethod } = req.body;
+const EMAIL_USER = process.env.EMAIL_USER;
+const EMAIL_PASS = process.env.EMAIL_PASS;
+const RECEIVER_EMAIL = process.env.RECEIVER_EMAIL;
+const SMTP_HOST = process.env.SMTP_HOST;
+const SMTP_PORT = Number(process.env.SMTP_PORT || 587);
+const SMTP_SECURE = process.env.SMTP_SECURE === 'true';
 
-    if (!products?.length || !totalPrice || !shippingDetails || !paymentMethod) {
-      return res.status(400).json({ message: 'Missing required order fields.' });
+
+// ── POST /api/contact ─────────────────────────────────
+app.post('/api/contact', async (req, res) => {
+  try {
+    const { name, email, subject, message } = req.body;
+
+    if (!name || !email || !message) {
+      return res.status(400).json({ message: 'Name, email, and message are required.' });
     }
 
-    const order = await Order.create({
-      products,
-      totalPrice,
-      shippingDetails,
-      paymentMethod,
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      return res.status(400).json({ message: 'Invalid email address.' });
+    }
+
+    if (!EMAIL_USER || !EMAIL_PASS || !RECEIVER_EMAIL) {
+      return res.status(500).json({ message: 'Email service not configured.' });
+    }
+
+    const transporter = nodemailer.createTransport({
+      host: SMTP_HOST || 'smtp.gmail.com',
+      port: SMTP_PORT,
+      secure: SMTP_SECURE,
+      auth: {
+        user: EMAIL_USER,
+        pass: EMAIL_PASS,
+      },
     });
 
-    res.status(201).json({ message: 'Order placed successfully!', order });
+    const cleanSubject = subject?.trim() || 'New message from contact form';
+    const prefixedSubject = `Luxury Fragrance Inquiry: ${cleanSubject}`;
+
+    await transporter.sendMail({
+      from: `Aurelia Boutique <${EMAIL_USER}>`,
+      to: RECEIVER_EMAIL,
+      replyTo: email,
+      subject: prefixedSubject,
+      text: `Name: ${name}\nEmail: ${email}\nSubject: ${cleanSubject}\n\n${message}`,
+    });
+
+    return res.status(200).json({ message: 'Message sent successfully.' });
   } catch (err) {
-    console.error('Order creation failed:', err);
-    res.status(500).json({ message: 'Internal server error.' });
+    console.error('Contact form failed:', err);
+    return res.status(500).json({ message: 'Failed to send message.' });
   }
 });
 
-// ── Connect & Start ───────────────────────────────────
-mongoose
-  .connect(MONGO_URI)
-  .then(() => {
-    console.log('Connected to MongoDB');
-    app.listen(PORT, () => console.log(`API server running on http://localhost:${PORT}`));
-  })
-  .catch((err) => {
-    console.error('MongoDB connection error:', err);
-    process.exit(1);
-  });
+// ── Start ─────────────────────────────────────────────
+app.listen(PORT, () => console.log(`API server running on http://localhost:${PORT}`));
