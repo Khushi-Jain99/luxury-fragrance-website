@@ -63,41 +63,27 @@
         perspective: 900px;
     }
 
-    .bottle-3d {
-        width: min(340px, 70vw);
-        aspect-ratio: 3 / 4;
-        border-radius: 22% 22% 28% 28%;
-        background:
-            linear-gradient(170deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.05) 55%),
-            linear-gradient(190deg, #b79135, #f5dfa6 45%, #8f6f2f 100%);
-        border: 1px solid rgba(255, 255, 255, 0.42);
-        position: relative;
+    &__icon {
+        width: clamp(44px, 7vw, 80px);
+        height: auto;
+        animation: float 3s ease-in-out infinite;
+        filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
+    }
+
+    &__bottle {
+        display: grid;
+        place-items: center;
+        perspective: 1200px; /* IMPORTANT for real 3D feel */
+    }
+
+    &__icon {
+        width: clamp(170px, 60vw, 420px);
+        height: auto;
+
         transform-style: preserve-3d;
-        animation: floatBottle 5s ease-in-out infinite;
+        animation: luxurySwing 6s ease-in-out infinite;
 
-        &::before {
-            content: '';
-            position: absolute;
-            width: 32%;
-            height: 18%;
-            border-radius: 6px;
-            left: 34%;
-            top: -12%;
-            background: linear-gradient(180deg, #f2dcab, #8f7230);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
-
-        &::after {
-            content: 'A';
-            position: absolute;
-            inset: 18% 22%;
-            border: 1px solid rgba(255, 255, 255, 0.45);
-            display: grid;
-            place-items: center;
-            font-family: var(--font-serif);
-            font-size: 3.8rem;
-            color: rgba(23, 19, 13, 0.7);
-        }
+        filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.35));
     }
 }
 
@@ -410,14 +396,17 @@
     }
 }
 
-@keyframes floatBottle {
-    0%,
-    100% {
-        transform: rotateY(-12deg) translateY(0);
+@keyframes float {
+    0% {
+        transform: translateY(0);
     }
 
     50% {
-        transform: rotateY(8deg) translateY(-8px);
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
     }
 }
 
@@ -435,7 +424,7 @@
         }
 
         &__bottle {
-            display: none;
+            margin-top: 2.5rem;
         }
     }
 
@@ -464,5 +453,27 @@
 
     .product-grid {
         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+}
+
+@keyframes luxurySwing {
+    0% {
+        transform: perspective(1200px) rotateY(0deg) translateX(0px);
+    }
+
+    25% {
+        transform: perspective(1200px) rotateY(-22deg) translateX(-8px);
+    }
+
+    50% {
+        transform: perspective(1200px) rotateY(0deg) translateX(0px);
+    }
+
+    75% {
+        transform: perspective(1200px) rotateY(22deg) translateX(8px);
+    }
+
+    100% {
+        transform: perspective(1200px) rotateY(0deg) translateX(0px);
     }
 }
