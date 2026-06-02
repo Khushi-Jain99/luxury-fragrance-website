@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D4A849"/>
+      <stop offset="100%" stop-color="#8D6B2A"/>
+    </linearGradient>
+  </defs>
+  <!-- Bottle cap -->
+  <rect x="26" y="4" width="12" height="8" rx="2" fill="url(#g)"/>
+  <!-- Neck -->
+  <rect x="28" y="12" width="8" height="6" fill="url(#g)"/>
+  <!-- Body -->
+  <path d="M22 18h20c2 0 4 4 4 8v24c0 4-2 8-6 8H24c-4 0-6-4-6-8V26c0-4 2-8 4-8Z" fill="url(#g)"/>
+  <!-- Highlight -->
+  <rect x="26" y="24" width="4" height="18" rx="2" fill="#F7F2E8" opacity="0.35"/>
+  <!-- A monogram -->
+  <text x="32" y="42" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#F7F2E8" text-anchor="middle">A</text>
+</svg>

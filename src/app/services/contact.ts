@@ -1,0 +1,21 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+export interface ContactPayload {
+  name: string;
+  email: string;
+  subject?: string;
+  message: string;
+}
+
+@Injectable({
+  providedIn: 'root',
+})
+export class ContactService {
+  constructor(private http: HttpClient) {}
+
+  sendMessage(payload: ContactPayload): Observable<{ message: string }> {
+    return this.http.post<{ message: string }>('/api/contact', payload);
+  }
+}

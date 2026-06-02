@@ -1,0 +1,63 @@
+<main class="page-container fade-in">
+    <header class="page-header">
+        <div class="container">
+            <p class="overline">Collection</p>
+            <h1>For Her</h1>
+            <p class="subtitle">Graceful essences that celebrate femininity and brilliance.</p>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="product-grid">
+            @for (product of products(); track product.id) {
+            <app-product-card [product]="product"></app-product-card>
+            }
+        </div>
+    </section>
+
+    <!-- Collection Philosophy -->
+    <section class="collection-intro container">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>The Femine Ethos</h2>
+                <p>Our women's collection is a tribute to the diverse facets of modern femininity. From the crystalline
+                    purity of white florals to the rich, velvet warmth of oriental ambers, each scent is a masterwork of
+                    balance and grace.</p>
+                <p>We use rare absolutes—jasmine from Grasse, tuberose from India—blended at high concentrations to
+                    ensure a fragrance that develops beautifully throughout the day, telling a story that is uniquely
+                    yours.</p>
+            </div>
+            <div class="about-image">
+                <img appImgFallback src="/images/women-intro.png" alt="Graceful feminine fragrance ethoso">
+            </div>
+        </div>
+    </section>
+
+    <!-- Boutique Services -->
+    <section class="services container">
+        <div class="section-title">
+            <h2>Boutique Services</h2>
+            <p>Elevate your experience</p>
+        </div>
+        <div class="services__grid">
+            <div class="service-item">
+                <img appImgFallback src="https://plus.unsplash.com/premium_photo-1738860331028-9103e025522d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8QXJ0JTIwb2YlMjBHaWZ0aW5nJTIwcGVyZnVtZXN8ZW58MHx8MHx8fDA%3D"
+                    alt="Engraving service">
+                <h4>Custom Engraving</h4>
+                <p>Personalize your bottle with initials or a significant date, hand-engraved by our artisans.</p>
+            </div>
+            <div class="service-item">
+                <img appImgFallback src="https://images.unsplash.com/photo-1595535373192-fc8935bacd89?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fEFydCUyMG9mJTIwR2lmdGluZyUyMHBlcmZ1bWVzfGVufDB8fDB8fHww"
+                    alt="Gift wrapping">
+                <h4>Art of Gifting</h4>
+                <p>Each purchase is encased in our signature wax-sealed box, perfect for any occasion.</p>
+            </div>
+            <div class="service-item">
+                <img appImgFallback src="https://images.unsplash.com/photo-1615160460366-2c9a41771b51?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fEFydCUyMG9mJTIwR2lmdGluZyUyMHBlcmZ1bWVzfGVufDB8fDB8fHww"
+                    alt="Consultation">
+                <h4>Fragrance Concierge</h4>
+                <p>Book a private consultation to find your perfect olfactory match with our specialists.</p>
+            </div>
+        </div>
+    </section>
+</main>

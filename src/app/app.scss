@@ -1,0 +1,41 @@
+.app-shell {
+	min-height: 100vh;
+	animation: pageEnter 0.75s ease both;
+	position: relative;
+
+	&::before,
+	&::after {
+		content: '';
+		position: fixed;
+		width: 280px;
+		height: 280px;
+		border-radius: 50%;
+		pointer-events: none;
+		z-index: -1;
+		filter: blur(10px);
+	}
+
+	&::before {
+		top: 14%;
+		right: 0;
+		background: radial-gradient(circle, rgba(199, 165, 84, 0.14), transparent 70%);
+	}
+
+	&::after {
+		bottom: 12%;
+		left: 0;
+		background: radial-gradient(circle, rgba(199, 165, 84, 0.1), transparent 70%);
+	}
+}
+
+@keyframes pageEnter {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

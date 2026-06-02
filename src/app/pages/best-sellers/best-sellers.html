@@ -1,0 +1,17 @@
+<main class="page-container fade-in">
+    <header class="page-header">
+        <div class="container">
+            <p class="overline">Most Loved</p>
+            <h1>Best Sellers</h1>
+            <p class="subtitle">Iconic signatures adored by collectors and stylists worldwide.</p>
+        </div>
+    </header>
+
+    <section class="best-sellers-grid container">
+        <div class="product-grid">
+            @for (product of bestSellers(); track product.id) {
+            <app-product-card [product]="product"></app-product-card>
+            }
+        </div>
+    </section>
+</main>

@@ -1,0 +1,42 @@
+<main class="page-container fade-in">
+    <header class="page-header">
+        <div class="container">
+            <p class="overline">Shop</p>
+            <h1>The Collection</h1>
+            <p class="subtitle">Discover our full range of luxury fragrances, curated for the modern connoisseur.</p>
+        </div>
+    </header>
+
+    <section class="filters container">
+        <div class="filter-group">
+            <span class="filter-label">Category</span>
+            <div class="filter-chips">
+                @for (cat of categories; track cat) {
+                <button type="button" [class.active]="selectedCategory() === cat" (click)="selectCategory(cat)">{{ cat }}</button>
+                }
+            </div>
+        </div>
+        <div class="filter-group">
+            <span class="filter-label">Family</span>
+            <div class="filter-chips">
+                @for (fam of families; track fam) {
+                <button type="button" [class.active]="selectedFamily() === fam" (click)="selectFamily(fam)">{{ fam }}</button>
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="collection-grid container">
+        @if (filteredProducts().length > 0) {
+        <div class="product-grid">
+            @for (product of filteredProducts(); track product.id) {
+            <app-product-card [product]="product"></app-product-card>
+            }
+        </div>
+        } @else {
+        <div class="empty-state">
+            <p>No fragrances match your filters. Try a different combination.</p>
+        </div>
+        }
+    </section>
+</main>

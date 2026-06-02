@@ -1,0 +1,59 @@
+@use '../../../styles' as *;
+
+.filters {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    .filter-group {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .filter-label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--color-text-muted);
+        min-width: 70px;
+    }
+
+    .filter-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+
+        button {
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            background: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-size: 0.66rem;
+            padding: 0.6rem 0.9rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+
+            &.active,
+            &:hover {
+                border-color: var(--color-gold);
+                color: var(--color-accent);
+            }
+        }
+    }
+}
+
+.collection-grid {
+    padding-bottom: 4rem;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.1rem;
+}

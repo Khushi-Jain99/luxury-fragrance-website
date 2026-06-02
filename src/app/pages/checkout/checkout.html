@@ -1,0 +1,230 @@
+<main class="page-container fade-in">
+    <header class="page-header">
+        <div class="container">
+            <p class="overline">Finalise Your Order</p>
+            <h1>Checkout</h1>
+            <p class="subtitle">Complete your details to place your luxury fragrance order.</p>
+        </div>
+    </header>
+
+    <section class="checkout-content container">
+        @if (cartItems().length > 0) {
+        <div class="checkout-layout">
+            <!-- Shipping & Payment -->
+            <div class="checkout-form-section">
+                <form [formGroup]="shippingForm" (ngSubmit)="placeOrder()" class="checkout-form" autocomplete="on">
+                    <h3 class="section-heading">Shipping Details</h3>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" formControlName="fullName" placeholder="John Doe"
+                                autocomplete="name" />
+                            @if (shippingForm.get('fullName')?.touched && shippingForm.get('fullName')?.invalid) {
+                            <span class="field-error">Full name is required</span>
+                            }
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" formControlName="phone" placeholder="1234567890"
+                                autocomplete="tel" />
+                            @if (shippingForm.get('phone')?.touched && shippingForm.get('phone')?.invalid) {
+                            <span class="field-error">Enter a valid 10-digit number</span>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" formControlName="address"
+                            placeholder="Street address, apartment, suite" autocomplete="street-address" />
+                        @if (shippingForm.get('address')?.touched && shippingForm.get('address')?.invalid) {
+                        <span class="field-error">Address is required</span>
+                        }
+                    </div>
+
+                    <div class="form-row form-row--three">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" formControlName="city" placeholder="City"
+                                autocomplete="address-level2" />
+                            @if (shippingForm.get('city')?.touched && shippingForm.get('city')?.invalid) {
+                            <span class="field-error">Required</span>
+                            }
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <input type="text" id="state" formControlName="state" placeholder="State"
+                                autocomplete="address-level1" />
+                            @if (shippingForm.get('state')?.touched && shippingForm.get('state')?.invalid) {
+                            <span class="field-error">Required</span>
+                            }
+                        </div>
+                        <div class="form-group">
+                            <label for="pincode">Pincode</label>
+                            <input type="text" id="pincode" formControlName="pincode" placeholder="123456"
+                                autocomplete="postal-code" />
+                            @if (shippingForm.get('pincode')?.touched && shippingForm.get('pincode')?.invalid) {
+                            <span class="field-error">Valid pincode required</span>
+                            }
+                        </div>
+                    </div>
+
+                    <h3 class="section-heading">Payment Method</h3>
+                    <div class="payment-options">
+                        <button type="button" class="payment-option"
+                            [class.payment-option--active]="paymentMethod() === 'COD'"
+                            (click)="selectPayment('COD')">
+                            <span class="payment-icon">💵</span>
+                            <span>Cash on Delivery</span>
+                        </button>
+                        <button type="button" class="payment-option"
+                            [class.payment-option--active]="paymentMethod() === 'UPI'"
+                            (click)="selectPayment('UPI')">
+                            <span class="payment-icon">📱</span>
+                            <span>UPI</span>
+                        </button>
+                        <button type="button" class="payment-option"
+                            [class.payment-option--active]="paymentMethod() === 'CARD'"
+                            (click)="selectPayment('CARD')">
+                            <span class="payment-icon">💳</span>
+                            <span>Card</span>
+                        </button>
+                    </div>
+
+                    @if (paymentMethod() === 'UPI') {
+                    <div class="upi-section" [formGroup]="upiForm">
+                        <div class="upi-header">
+                            <h4>UPI Payment</h4>
+                            <p>Pay securely using your preferred UPI app.</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="upiId">UPI ID</label>
+                            <input type="text" id="upiId" formControlName="upiId"
+                                placeholder="example@paytm / example@oksbi" autocomplete="off" />
+                            @if (upiForm.get('upiId')?.touched && upiForm.get('upiId')?.errors?.['required']) {
+                            <span class="field-error">UPI ID is required</span>
+                            }
+                            @if (upiForm.get('upiId')?.touched && upiForm.get('upiId')?.errors?.['pattern']) {
+                            <span class="field-error">Enter a valid UPI ID</span>
+                            }
+                        </div>
+
+                        <div class="form-group">
+                            <label>UPI App</label>
+                            <div class="upi-apps">
+                                <label class="upi-app">
+                                    <input type="radio" formControlName="upiApp" value="Google Pay" />
+                                    <span>Google Pay</span>
+                                </label>
+                                <label class="upi-app">
+                                    <input type="radio" formControlName="upiApp" value="PhonePe" />
+                                    <span>PhonePe</span>
+                                </label>
+                                <label class="upi-app">
+                                    <input type="radio" formControlName="upiApp" value="Paytm" />
+                                    <span>Paytm</span>
+                                </label>
+                                <label class="upi-app">
+                                    <input type="radio" formControlName="upiApp" value="BHIM" />
+                                    <span>BHIM</span>
+                                </label>
+                                <label class="upi-app">
+                                    <input type="radio" formControlName="upiApp" value="Other" />
+                                    <span>Other</span>
+                                </label>
+                            </div>
+                            @if (upiForm.get('upiApp')?.touched && upiForm.get('upiApp')?.invalid) {
+                            <span class="field-error">Please select a UPI app</span>
+                            }
+                        </div>
+
+                        <div class="form-group">
+                            <label for="upiMobile">Mobile Number (Optional)</label>
+                            <input type="tel" id="upiMobile" formControlName="upiMobile"
+                                placeholder="10-digit mobile number" autocomplete="tel" />
+                            @if (upiForm.get('upiMobile')?.touched && upiForm.get('upiMobile')?.errors?.['pattern']) {
+                            <span class="field-error">Enter a valid 10-digit number</span>
+                            }
+                        </div>
+
+                        <div class="upi-summary">
+                            <div class="upi-summary__row">
+                                <span>Order Total</span>
+                                <strong>{{ total() | currency: 'USD' }}</strong>
+                            </div>
+                            <div class="upi-summary__row">
+                                <span>Items Count</span>
+                                <strong>{{ totalItems() }}</strong>
+                            </div>
+                            <div class="upi-summary__row">
+                                <span>Payment Method</span>
+                                <strong>UPI</strong>
+                            </div>
+                        </div>
+                    </div>
+                    }
+
+                    @if (successMessage()) {
+                    <p class="success-banner">{{ successMessage() }}</p>
+                    }
+
+                    @if (errorMessage()) {
+                    <p class="error-banner">{{ errorMessage() }}</p>
+                    }
+
+                    <button type="submit" class="btn btn--primary btn--full btn--place-order"
+                        [disabled]="shippingForm.invalid || submitting() || (paymentMethod() === 'UPI' && upiForm.invalid)">
+                        @if (submitting()) {
+                        {{ paymentMethod() === 'UPI' ? 'Processing Payment…' : 'Placing Order…' }}
+                        } @else {
+                        {{ paymentMethod() === 'UPI' ? 'Pay & Place Order' : 'Place Order' }}
+                        }
+                    </button>
+                </form>
+            </div>
+
+            <!-- Order Summary -->
+            <aside class="order-summary">
+                <h3>Order Summary</h3>
+                <div class="summary-items">
+                    @for (item of cartItems(); track item.product.id) {
+                    <div class="summary-item">
+                        <div class="summary-item__image">
+                            <img appImgFallback [src]="item.product.image" [alt]="item.product.name" />
+                            <span class="summary-item__qty">{{ item.quantity }}</span>
+                        </div>
+                        <div class="summary-item__info">
+                            <p class="summary-item__name">{{ item.product.name }}</p>
+                            <p class="summary-item__brand">{{ item.product.brand }}</p>
+                        </div>
+                        <p class="summary-item__price">{{ item.subtotal | currency: 'USD' }}</p>
+                    </div>
+                    }
+                </div>
+                <div class="summary-totals">
+                    <div class="summary-row">
+                        <span>Subtotal ({{ totalItems() }} items)</span>
+                        <span>{{ total() | currency: 'USD' }}</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span>Complimentary</span>
+                    </div>
+                    <div class="summary-row summary-row--total">
+                        <span>Total</span>
+                        <span>{{ total() | currency: 'USD' }}</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+        } @else {
+        <div class="empty-state">
+            <h3>No items to checkout</h3>
+            <p>Your cart is empty. Add something before proceeding.</p>
+            <a routerLink="/collection" class="btn btn--primary">Shop Collection</a>
+        </div>
+        }
+    </section>
+</main>
