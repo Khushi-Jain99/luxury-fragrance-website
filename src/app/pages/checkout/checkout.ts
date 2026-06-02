@@ -31,6 +31,7 @@ export class CheckoutComponent implements OnInit {
 
   submitting = signal(false);
   errorMessage = signal('');
+  successMessage = signal('');
 
   shippingForm: FormGroup = this.fb.group({
     fullName: ['', [Validators.required, Validators.minLength(2)]],
@@ -39,6 +40,12 @@ export class CheckoutComponent implements OnInit {
     city: ['', [Validators.required]],
     state: ['', [Validators.required]],
     pincode: ['', [Validators.required, Validators.pattern(/^\d{5,6}$/)]],
+  });
+
+  upiForm: FormGroup = this.fb.group({
+    upiId: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._-]{2,}@[a-zA-Z0-9]{2,}$/)]],
+    upiApp: ['', [Validators.required]],
+    upiMobile: ['', [Validators.pattern(/^\d{10}$/)]],
   });
 
   paymentMethod = signal<'COD' | 'UPI' | 'CARD'>('COD');
@@ -82,19 +89,21 @@ export class CheckoutComponent implements OnInit {
       return;
     }
 
-    if (this.paymentMethod() !== 'COD') {
-      this.errorMessage.set('Only Cash on Delivery is available right now.');
-      return;
-    }
-
     if (this.shippingForm.invalid) {
       this.shippingForm.markAllAsTouched();
       this.errorMessage.set('Please complete all required shipping details.');
       return;
     }
 
+    if (this.paymentMethod() === 'UPI' && this.upiForm.invalid) {
+      this.upiForm.markAllAsTouched();
+      this.errorMessage.set('Please enter valid UPI payment details.');
+      return;
+    }
+
     this.submitting.set(true);
     this.errorMessage.set('');
+    this.successMessage.set('');
 
     const orderProducts: OrderProduct[] = this.cartItems().map((item) => ({
       productId: item.product.id,
@@ -105,17 +114,32 @@ export class CheckoutComponent implements OnInit {
       image: item.product.image,
     }));
 
+    const isUpi = this.paymentMethod() === 'UPI';
+
     this.orderService.placeOrder({
       products: orderProducts,
       totalPrice: this.total(),
       shippingDetails: this.shippingForm.value,
       paymentMethod: this.paymentMethod(),
+      upiId: isUpi ? this.upiForm.value.upiId : undefined,
+      upiApp: isUpi ? this.upiForm.value.upiApp : undefined,
     }).subscribe({
       next: (res) => {
+        if (isUpi) {
+          this.successMessage.set('Payment successful. Placing your order now...');
+        }
         this.cart.clear();
-        this.router.navigate(['/order-success'], {
-          queryParams: { orderId: res.order._id },
-        });
+        const navigate = () => {
+          this.router.navigate(['/order-success'], {
+            queryParams: { orderId: res.order._id },
+          });
+        };
+
+        if (isUpi) {
+          setTimeout(navigate, 350);
+        } else {
+          navigate();
+        }
       },
       error: (err) => {
         this.submitting.set(false);

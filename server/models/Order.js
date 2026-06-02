@@ -39,6 +39,12 @@ const orderSchema = new mongoose.Schema({
     enum: ['Pending', 'Paid', 'Failed'],
     default: 'Pending',
   },
+  upiId: {
+    type: String,
+  },
+  upiApp: {
+    type: String,
+  },
   orderStatus: {
     type: String,
     enum: ['Placed', 'Processing', 'Shipped', 'Delivered', 'Cancelled'],

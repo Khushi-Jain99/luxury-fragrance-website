@@ -25,6 +25,8 @@ export interface OrderPayload {
   totalPrice: number;
   shippingDetails: ShippingDetails;
   paymentMethod: 'COD' | 'UPI' | 'CARD';
+  upiId?: string;
+  upiApp?: string;
 }
 
 export interface OrderResponse {
@@ -36,6 +38,8 @@ export interface OrderResponse {
     shippingDetails: ShippingDetails;
     paymentMethod: string;
     paymentStatus?: string;
+    upiId?: string;
+    upiApp?: string;
     orderStatus: string;
     createdAt: string;
   };

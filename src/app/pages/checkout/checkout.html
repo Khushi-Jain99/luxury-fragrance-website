@@ -92,13 +92,95 @@
                         </button>
                     </div>
 
+                    @if (paymentMethod() === 'UPI') {
+                    <div class="upi-section" [formGroup]="upiForm">
+                        <div class="upi-header">
+                            <h4>UPI Payment</h4>
+                            <p>Pay securely using your preferred UPI app.</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="upiId">UPI ID</label>
+                            <input type="text" id="upiId" formControlName="upiId"
+                                placeholder="example@paytm / example@oksbi" autocomplete="off" />
+                            @if (upiForm.get('upiId')?.touched && upiForm.get('upiId')?.errors?.['required']) {
+                            <span class="field-error">UPI ID is required</span>
+                            }
+                            @if (upiForm.get('upiId')?.touched && upiForm.get('upiId')?.errors?.['pattern']) {
+                            <span class="field-error">Enter a valid UPI ID</span>
+                            }
+                        </div>
+
+                        <div class="form-group">
+                            <label>UPI App</label>
+                            <div class="upi-apps">
+                                <label class="upi-app">
+                                    <input type="radio" formControlName="upiApp" value="Google Pay" />
+                                    <span>Google Pay</span>
+                                </label>
+                                <label class="upi-app">
+                                    <input type="radio" formControlName="upiApp" value="PhonePe" />
+                                    <span>PhonePe</span>
+                                </label>
+                                <label class="upi-app">
+                                    <input type="radio" formControlName="upiApp" value="Paytm" />
+                                    <span>Paytm</span>
+                                </label>
+                                <label class="upi-app">
+                                    <input type="radio" formControlName="upiApp" value="BHIM" />
+                                    <span>BHIM</span>
+                                </label>
+                                <label class="upi-app">
+                                    <input type="radio" formControlName="upiApp" value="Other" />
+                                    <span>Other</span>
+                                </label>
+                            </div>
+                            @if (upiForm.get('upiApp')?.touched && upiForm.get('upiApp')?.invalid) {
+                            <span class="field-error">Please select a UPI app</span>
+                            }
+                        </div>
+
+                        <div class="form-group">
+                            <label for="upiMobile">Mobile Number (Optional)</label>
+                            <input type="tel" id="upiMobile" formControlName="upiMobile"
+                                placeholder="10-digit mobile number" autocomplete="tel" />
+                            @if (upiForm.get('upiMobile')?.touched && upiForm.get('upiMobile')?.errors?.['pattern']) {
+                            <span class="field-error">Enter a valid 10-digit number</span>
+                            }
+                        </div>
+
+                        <div class="upi-summary">
+                            <div class="upi-summary__row">
+                                <span>Order Total</span>
+                                <strong>{{ total() | currency: 'USD' }}</strong>
+                            </div>
+                            <div class="upi-summary__row">
+                                <span>Items Count</span>
+                                <strong>{{ totalItems() }}</strong>
+                            </div>
+                            <div class="upi-summary__row">
+                                <span>Payment Method</span>
+                                <strong>UPI</strong>
+                            </div>
+                        </div>
+                    </div>
+                    }
+
+                    @if (successMessage()) {
+                    <p class="success-banner">{{ successMessage() }}</p>
+                    }
+
                     @if (errorMessage()) {
                     <p class="error-banner">{{ errorMessage() }}</p>
                     }
 
                     <button type="submit" class="btn btn--primary btn--full btn--place-order"
-                        [disabled]="shippingForm.invalid || submitting()">
-                        {{ submitting() ? 'Placing Order…' : 'Place Order' }}
+                        [disabled]="shippingForm.invalid || submitting() || (paymentMethod() === 'UPI' && upiForm.invalid)">
+                        @if (submitting()) {
+                        {{ paymentMethod() === 'UPI' ? 'Processing Payment…' : 'Placing Order…' }}
+                        } @else {
+                        {{ paymentMethod() === 'UPI' ? 'Pay & Place Order' : 'Place Order' }}
+                        }
                     </button>
                 </form>
             </div>

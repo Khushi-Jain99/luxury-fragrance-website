@@ -71,7 +71,7 @@ app.post('/api/contact', async (req, res) => {
 // ── POST /api/orders ─────────────────────────────────
 app.post('/api/orders', async (req, res) => {
   try {
-    const { products, totalPrice, shippingDetails, paymentMethod } = req.body;
+    const { products, totalPrice, shippingDetails, paymentMethod, upiId, upiApp } = req.body;
 
     console.log('Order request received', {
       productCount: Array.isArray(products) ? products.length : 0,
@@ -91,8 +91,18 @@ app.post('/api/orders', async (req, res) => {
       return res.status(400).json({ message: 'Your cart is empty.' });
     }
 
-    if (!paymentMethod || paymentMethod !== 'COD') {
-      return res.status(400).json({ message: 'Only Cash on Delivery is available right now.' });
+    if (!paymentMethod || !['COD', 'UPI'].includes(paymentMethod)) {
+      return res.status(400).json({ message: 'Unsupported payment method.' });
+    }
+
+    if (paymentMethod === 'UPI') {
+      const upiRegex = /^[a-zA-Z0-9._-]{2,}@[a-zA-Z0-9]{2,}$/;
+      if (!upiId || !upiRegex.test(upiId)) {
+        return res.status(400).json({ message: 'Valid UPI ID is required.' });
+      }
+      if (!upiApp) {
+        return res.status(400).json({ message: 'UPI app selection is required.' });
+      }
     }
 
     if (typeof totalPrice !== 'number' || totalPrice < 0) {
@@ -107,9 +117,11 @@ app.post('/api/orders', async (req, res) => {
       products,
       totalPrice,
       shippingDetails,
-      paymentMethod: 'COD',
-      paymentStatus: 'Pending',
+      paymentMethod,
+      paymentStatus: paymentMethod === 'UPI' ? 'Paid' : 'Pending',
       orderStatus: 'Placed',
+      upiId: paymentMethod === 'UPI' ? upiId : undefined,
+      upiApp: paymentMethod === 'UPI' ? upiApp : undefined,
     });
 
     console.log('Order saved', {

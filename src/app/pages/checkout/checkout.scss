@@ -115,12 +115,77 @@
     }
 }
 
+.upi-section {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.upi-header {
+    h4 {
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+    }
+
+    p {
+        font-size: 0.82rem;
+        color: var(--color-text-muted);
+    }
+}
+
+.upi-apps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+}
+
+.upi-app {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: var(--color-ivory);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.7rem;
+}
+
+.upi-summary {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding-top: 0.9rem;
+    display: grid;
+    gap: 0.5rem;
+}
+
+.upi-summary__row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+
+    strong {
+        color: var(--color-black);
+    }
+}
+
 .error-banner {
     background: #fdf0ed;
     color: #c0392b;
     padding: 0.8rem 1rem;
     font-size: 0.85rem;
     border-left: 3px solid #c0392b;
+}
+
+.success-banner {
+    background: #eff8f1;
+    color: #1d6f3a;
+    padding: 0.8rem 1rem;
+    font-size: 0.85rem;
+    border-left: 3px solid #1d6f3a;
 }
 
 .btn--place-order {
@@ -274,6 +339,10 @@
     }
 
     .payment-options {
+        grid-template-columns: 1fr;
+    }
+
+    .upi-apps {
         grid-template-columns: 1fr;
     }
 
