@@ -10,7 +10,7 @@
             </div>
 
             <p class="overline">Thank You</p>
-            <h1>Order Confirmed</h1>
+            <h1>Order Placed Successfully</h1>
             <p class="subtitle">Your luxury fragrance order has been placed successfully.</p>
 
             @if (orderId()) {
@@ -19,6 +19,21 @@
                 <span class="order-id-value">{{ orderId() }}</span>
             </div>
             }
+
+            <div class="order-details">
+                <div class="detail-row">
+                    <span class="detail-label">Payment Method</span>
+                    <span class="detail-value">Cash on Delivery</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Order Status</span>
+                    <span class="detail-value">Placed</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Estimated Delivery</span>
+                    <span class="detail-value">3–5 Business Days</span>
+                </div>
+            </div>
 
             <p class="note">You will receive a confirmation with the order details shortly.</p>
 

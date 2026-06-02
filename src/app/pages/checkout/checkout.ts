@@ -41,7 +41,7 @@ export class CheckoutComponent implements OnInit {
     pincode: ['', [Validators.required, Validators.pattern(/^\d{5,6}$/)]],
   });
 
-  paymentMethod = signal<string>('cod');
+  paymentMethod = signal<'COD' | 'UPI' | 'CARD'>('COD');
 
   cartItems = computed<CheckoutItem[]>(() => {
     return this.cart.entries().map((entry) => {
@@ -69,11 +69,29 @@ export class CheckoutComponent implements OnInit {
   }
 
   selectPayment(method: string): void {
-    this.paymentMethod.set(method);
+    if (method === 'COD' || method === 'UPI' || method === 'CARD') {
+      this.paymentMethod.set(method);
+    }
   }
 
   placeOrder(): void {
-    if (this.shippingForm.invalid || this.submitting()) return;
+    if (this.submitting()) return;
+
+    if (this.cartItems().length === 0) {
+      this.errorMessage.set('Your cart is empty. Add items before placing an order.');
+      return;
+    }
+
+    if (this.paymentMethod() !== 'COD') {
+      this.errorMessage.set('Only Cash on Delivery is available right now.');
+      return;
+    }
+
+    if (this.shippingForm.invalid) {
+      this.shippingForm.markAllAsTouched();
+      this.errorMessage.set('Please complete all required shipping details.');
+      return;
+    }
 
     this.submitting.set(true);
     this.errorMessage.set('');
@@ -99,9 +117,10 @@ export class CheckoutComponent implements OnInit {
           queryParams: { orderId: res.order._id },
         });
       },
-      error: () => {
+      error: (err) => {
         this.submitting.set(false);
-        this.errorMessage.set('Something went wrong. Please try again.');
+        const message = err?.error?.message || 'Something went wrong. Please try again.';
+        this.errorMessage.set(message);
       },
     });
   }

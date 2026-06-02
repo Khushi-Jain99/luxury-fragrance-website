@@ -73,20 +73,20 @@
                     <h3 class="section-heading">Payment Method</h3>
                     <div class="payment-options">
                         <button type="button" class="payment-option"
-                            [class.payment-option--active]="paymentMethod() === 'cod'"
-                            (click)="selectPayment('cod')">
+                            [class.payment-option--active]="paymentMethod() === 'COD'"
+                            (click)="selectPayment('COD')">
                             <span class="payment-icon">💵</span>
                             <span>Cash on Delivery</span>
                         </button>
                         <button type="button" class="payment-option"
-                            [class.payment-option--active]="paymentMethod() === 'upi'"
-                            (click)="selectPayment('upi')">
+                            [class.payment-option--active]="paymentMethod() === 'UPI'"
+                            (click)="selectPayment('UPI')">
                             <span class="payment-icon">📱</span>
                             <span>UPI</span>
                         </button>
                         <button type="button" class="payment-option"
-                            [class.payment-option--active]="paymentMethod() === 'card'"
-                            (click)="selectPayment('card')">
+                            [class.payment-option--active]="paymentMethod() === 'CARD'"
+                            (click)="selectPayment('CARD')">
                             <span class="payment-icon">💳</span>
                             <span>Card</span>
                         </button>

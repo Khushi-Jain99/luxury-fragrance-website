@@ -17,7 +17,7 @@ export class OrderSuccessComponent implements OnInit {
   orderId = signal('');
 
   ngOnInit(): void {
-    this.seo.updateTitle('Order Confirmed');
+    this.seo.updateTitle('Order Placed');
     this.seo.updateMeta('Your luxury fragrance order has been placed successfully.');
     this.orderId.set(this.route.snapshot.queryParamMap.get('orderId') ?? '');
   }

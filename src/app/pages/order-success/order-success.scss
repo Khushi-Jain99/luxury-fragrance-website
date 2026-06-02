@@ -91,6 +91,33 @@ h1 {
     word-break: break-all;
 }
 
+.order-details {
+    display: grid;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    padding: 1.2rem 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+}
+
+.detail-label {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-muted);
+    font-size: 0.65rem;
+}
+
+.detail-value {
+    font-weight: 600;
+}
+
 .note {
     color: var(--color-text-muted);
     font-size: 0.88rem;
